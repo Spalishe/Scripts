@@ -19,6 +19,7 @@ if(!Requested) {
         Requested = 1
         Scriptname = gTable("ScrNoiptNzme", 1)
         httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
+        print("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
         print("Downloading...")
     } else {
         print("You don't have access for the chip!")
