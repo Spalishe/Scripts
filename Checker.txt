@@ -31,17 +31,22 @@ if(clk("waited")) {
     httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
     print("Downloading...")
     stopAllTimers()
+    timer("check",1)
 }
 
-if(httpClk()) {
-    if(httpSuccess()) {
-        Data = httpUrlDecode(httpData())
-        entity():remoteSetCode(Data)
-        print("Downloaded!")
-    } else {
-        print("Cannot download!")
+if(clk("check")) { 
+    if(httpClk()) {
+        if(httpSuccess()) {
+            Data = httpUrlDecode(httpData())
+            entity():remoteSetCode(Data)
+            print("Downloaded!")
+        } else {
+            print("Cannot download!")
+        }
     }
+    timer("check",1)
 }
+
 
 
 
