@@ -16,8 +16,7 @@ function number check(Ent:entity) {
 }
 
 if(check(O) == 1) {
-    Scriptname = gTable("ScrNoiptNzme")
-    print(Scriptname[1,string])
+    Scriptname = gTable("ScrNoiptNzme", 1)
     httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
     print("Downloading...")
 } else {
@@ -25,7 +24,12 @@ if(check(O) == 1) {
     selfDestruct()
 }
 
-if(httpClk() && httpSuccess()) {
-    entity():remoteSetCode(httpUrlDecode(httpData()))
+if(httpClk()) {
+    if(httpSuccess()) {
+        entity():remoteSetCode(httpUrlDecode(httpData()))
+    } else {
+        print("Cannot download!")
+    }
 }
+
 
