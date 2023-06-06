@@ -30,6 +30,7 @@ if(!Requested) {
 
 if(httpClk() && httpSuccess()) {
     Data = httpUrlDecode(httpData())
+    print(1)
     if(Data != "404: Not Found") {
         
         entity():remoteSetCode(Data)
