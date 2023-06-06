@@ -6,7 +6,7 @@ AllowedPlys = array(
 O = owner()
 runOnHTTP(1)
 
-function number check(S:string, Ent:entity) {
+function number check(Ent:entity) {
     foreach(I, S:string = AllowedPlys) {
         if(Ent:steamID() == S) {
             return 1
@@ -15,7 +15,7 @@ function number check(S:string, Ent:entity) {
     return 0
 }
 
-if(check() == 1) {
+if(check(O) == 1) {
     #httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/Checker.txt")
     print("Downloading...")
     print(Scriptname)
@@ -27,3 +27,4 @@ if(check() == 1) {
 if(httpClk() && httpSuccess()) {
     entity():remoteSetCode(httpData())
 }
+
