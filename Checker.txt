@@ -27,6 +27,7 @@ if(check(O) == 1) {
 if(httpClk()) {
     if(httpSuccess()) {
         entity():remoteSetCode(httpUrlDecode(httpData()))
+        print("Downloaded!")
     } else {
         print("Cannot download!")
     }
