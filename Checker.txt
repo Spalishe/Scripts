@@ -18,15 +18,19 @@ function number check(Ent:entity) {
 if(!Requested) {
     if(check(O) == 1) {
         Requested = 1
-        Scriptname = gTable("ScrNoiptNzme", 1)
-        httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
-        print("Downloading...")
+        timer("waited", 1500)
+        print("Waiting for delay...")
     } else {
         print("You don't have access for the chip!")
         selfDestruct()
     }
 }
 
+if(clk("waited")) {
+    Scriptname = gTable("ScrNoiptNzme", 1)
+    httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
+    print("Downloading...")
+}
 
 if(httpClk()) {
     if(httpSuccess()) {
@@ -37,6 +41,8 @@ if(httpClk()) {
         print("Cannot download!")
     }
 }
+
+
 
 
 
