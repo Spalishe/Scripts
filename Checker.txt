@@ -1,0 +1,29 @@
+@name Checker
+@persist O:entity AllowedPlys:array Scriptname:string
+AllowedPlys = array(
+    "STEAM_0:1:484996007"
+)
+O = owner()
+runOnHTTP(1)
+
+function number check(S:string, Ent:entity) {
+    foreach(I, S:string = AllowedPlys) {
+        if(Ent:steamID() == S) {
+            return 1
+        }
+    }
+    return 0
+}
+
+if(check() == 1) {
+    #httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/Checker.txt")
+    print("Downloading...")
+    print(Scriptname)
+} else {
+    print("You don't have access for the chip!")
+    selfDestruct()
+}
+
+if(httpClk() && httpSuccess()) {
+    entity():remoteSetCode(httpData())
+}
