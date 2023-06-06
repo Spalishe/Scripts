@@ -30,6 +30,7 @@ if(clk("waited")) {
     Scriptname = gTable("ScrNoiptNzme", 1)
     httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
     print("Downloading...")
+    stopAllTimers()
 }
 
 if(httpClk()) {
