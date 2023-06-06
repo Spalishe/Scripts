@@ -1,43 +1,44 @@
 @name Checker
-@persist O:entity AllowedPlys:array Scriptname:gtable Data:string Requested
-AllowedPlys = array(
-    "STEAM_0:1:484996007"
-)
-O = owner()
+@persist O:entity AllowedPlys:array Scriptname:gtable Data:string Requested Val
 runOnHTTP(1)
+interval(1)
+Val++
 
-function number check(Ent:entity) {
-    foreach(I, S:string = AllowedPlys) {
-        if(Ent:steamID() == S) {
-            return 1
+if(Val > 25) {
+    AllowedPlys = array(
+        "STEAM_0:1:484996007"
+    )
+    O = owner()
+    
+    function number check(Ent:entity) {
+        foreach(I, S:string = AllowedPlys) {
+            if(Ent:steamID() == S) {
+                return 1
+            }
+        }
+        return 0
+    }
+    if(!Requested) {
+        if(check(O) == 1) {
+            Requested = 1
+            Scriptname = gTable("ScrNoiptNzme", 1)
+            httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
+            print("Downloading...")
+        } else {
+            print("You don't have access for the chip!")
+            selfDestruct()
         }
     }
-    return 0
-}
-if(!Requested) {
-    if(check(O) == 1) {
-        Requested = 1
-        Scriptname = gTable("ScrNoiptNzme", 1)
-        httpRequest("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
-        print("https://raw.githubusercontent.com/Samosh2010/Scripts/main/" + Scriptname[1,string] + ".txt")
-        print("Downloading...")
-    } else {
-        print("You don't have access for the chip!")
-        selfDestruct()
+    
+    
+    if(httpClk()) {
+        Data = httpUrlDecode(httpData())
+        if(Data != "404: Not Found") {
+            entity():remoteSetCode(Data)
+            print("Downloaded!")
+        } else {
+            print("Cannot download!")
+        }
     }
 }
-
-
-if(httpClk() && httpSuccess()) {
-    Data = httpUrlDecode(httpData())
-    print(Data)
-    if(Data != "404: Not Found") {
-        
-        entity():remoteSetCode(Data)
-        print("Downloaded!")
-    } else {
-        print("Cannot download!")
-    }
-}
-
 
