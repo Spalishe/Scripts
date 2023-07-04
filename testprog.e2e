@@ -1,0 +1,21 @@
+@name testprog.e2e
+
+#include "alx_pc/gpu/alxos/_main_"
+
+function alxos_testprog_init(Args:table) {
+
+    egpClear()
+    EGP:egpText(1, "Test Prog", vec2(256,256))
+    EGP:egpAlign(1, 1, 1)
+    
+    #DsHandler = "alxos_testprog_ds"
+    #KeyHandler = "alxos_testprog_key"
+
+}
+
+function alxos_testprog_key(Key:string,Pressed) {
+    if(!Pressed) {return}
+    if(Key == "esc") {
+        "alxos_execute"("alxos_explorer")
+    }
+}
