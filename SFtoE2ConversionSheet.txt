@@ -1,4 +1,4 @@
-local BuildVersion = 1
+BuildVersion = 1
 
 --[[
     Structure is
@@ -13,7 +13,7 @@ local BuildVersion = 1
 ]]
 
 //  Vararg == ...
-local ConversionTbl = {
+ConversionTbl = {
     {0,"and","?"},
     {0,"or",":"},
     {0,"then","{"},
