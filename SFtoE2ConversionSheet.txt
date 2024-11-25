@@ -1,0 +1,24 @@
+local BuildVersion = 1
+
+--[[
+    Structure is
+    
+    Operators:
+        [0,"operator", "e2 representation"]
+        
+    Functions:
+        [1,"function name", support status - 0: supported, 1: deprecated, 2: unsupported, warning message; empty if status is 0, "e2 function", "supposed args", "repres in e2"]
+    
+    
+]]
+
+//  Vararg == ...
+local ConversionTbl = {
+    {0,"and","?"},
+    {0,"or",":"},
+    {0,"then","{"},
+    {0,"do","{"},
+    {0,"end","}"},
+    {1,"print",0,"print","...","..."},
+    {1,"version",0,"_WIREVERSION_STR","...","..."},
+}
