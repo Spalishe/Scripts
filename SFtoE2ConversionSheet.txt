@@ -7,7 +7,7 @@ BuildVersion = 1
         [0,"operator", "e2 representation"]
         
     Functions:
-        [1,"function name", support status - 0: supported, 1: deprecated, 2: unsupported, warning message; empty if status is 0, "e2 function", "supposed args", "repres in e2"]
+        [1,"function name", support status - 0: supported, 1: deprecated, warning message; empty if status is 0, "e2 function", "supposed args", "repres in e2"]
     
     
 ]]
